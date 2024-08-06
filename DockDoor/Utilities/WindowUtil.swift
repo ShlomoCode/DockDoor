@@ -84,34 +84,37 @@ final class WindowUtil {
     
     // MARK: - Helper Functions
     
-    static func captureWindowImage(window: SCWindow) async throws -> CGImage {
+    static func captureWindowImage(window: SCWindow) async -> CGImage? {
         clearExpiredCache()
         
         if let cachedImage = getCachedImage(window: window) {
             return cachedImage
         }
         
-        let filter = SCContentFilter(desktopIndependentWindow: window)
-        let config = SCStreamConfiguration()
+//        let filter = SCContentFilter(desktopIndependentWindow: window)
+//        let config = SCStreamConfiguration()
+//        
+//        config.scalesToFit = false
+//        config.backgroundColor = .clear
+//        config.ignoreGlobalClipDisplay = true
+//        config.ignoreShadowsDisplay = true
+//        config.shouldBeOpaque = false
+//        if #available(macOS 14.2, *) { config.includeChildWindows = false }
+//        
+//        // Get the scale factor of the display containing the window
+//        let scaleFactor = await getScaleFactorForWindow(windowID: window.windowID)
+//        
+//        // Convert points to pixels
+//        config.width = Int(window.frame.width * scaleFactor) / Int(Defaults[.windowPreviewImageScale])
+//        config.height = Int(window.frame.height * scaleFactor) / Int(Defaults[.windowPreviewImageScale])
+//        
+//        config.showsCursor = false
+//        config.captureResolution = .best
+//        
+//        let image = try await SCScreenshotManager.captureImage(contentFilter: filter, configuration: config)
         
-        config.scalesToFit = false
-        config.backgroundColor = .clear
-        config.ignoreGlobalClipDisplay = true
-        config.ignoreShadowsDisplay = true
-        config.shouldBeOpaque = false
-        if #available(macOS 14.2, *) { config.includeChildWindows = false }
-        
-        // Get the scale factor of the display containing the window
-        let scaleFactor = await getScaleFactorForWindow(windowID: window.windowID)
-        
-        // Convert points to pixels
-        config.width = Int(window.frame.width * scaleFactor) / Int(Defaults[.windowPreviewImageScale])
-        config.height = Int(window.frame.height * scaleFactor) / Int(Defaults[.windowPreviewImageScale])
-        
-        config.showsCursor = false
-        config.captureResolution = .best
-        
-        let image = try await SCScreenshotManager.captureImage(contentFilter: filter, configuration: config)
+        let image = window.windowID.screenshot(bestResolution: true)
+        guard let image = image else { return nil }
         
         let cachedImage = CachedImage(image: image, timestamp: Date(), windowname: window.title)
         imageCache[window.windowID] = cachedImage
@@ -438,6 +441,7 @@ final class WindowUtil {
     private static func fetchWindowInfo(window: SCWindow, applicationName: String) async throws -> WindowInfo? {
         let windowID = window.windowID
         
+        let a = window.title?.isEmpty
         guard let owningApplication = window.owningApplication,
               window.isOnScreen,
               window.windowLayer == 0,
@@ -476,12 +480,12 @@ final class WindowUtil {
                                     lastUsed: Date()
         )
         
-        do {
-            windowInfo.image = try await captureWindowImage(window: window)
+        if let image = await captureWindowImage(window: window) {
+            windowInfo.image = image
             updateDesktopSpaceWindowCache(with: windowInfo)
             return windowInfo
-        } catch {
-            print("Error capturing window image: \(error)")
+        } else {
+            print("Error capturing window image")
             return nil
         }
     }
