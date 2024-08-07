@@ -11,6 +11,41 @@ import Defaults
 import Settings
 import Sparkle
 
+import Cocoa
+import ApplicationServices
+import ScreenCaptureKit
+
+func captureVSCodeWindow() async throws {
+    let runningApps = NSWorkspace.shared.runningApplications
+    guard let vscodeApp = runningApps.first(where: { $0.bundleIdentifier == "com.microsoft.VSCode" }) else {
+        print("VSCode is not running.")
+        return
+    }
+
+    let pid = vscodeApp.processIdentifier
+    let axAppElement = AXUIElementCreateApplication(pid)
+
+    guard let axWindows = try? axAppElement.windows(), !axWindows.isEmpty else {
+        print("Failed to get windows for VSCode or no windows found.")
+        return
+    }
+    let firstWindow = axWindows[0]
+    print("Is the first window minimized? \(String(describing: try? firstWindow.isMinimized()))")
+
+    let shareableContent = try await SCShareableContent.excludingDesktopWindows(false, onScreenWindowsOnly: false)
+    guard let windowToCapture = shareableContent.windows.first(where: { $0.owningApplication?.processID == pid }) else {
+        print("Failed to find the VSCode window in shareable content.")
+        return
+    }
+    
+    do {
+        let image = try await WindowUtil.captureWindowImage(window: windowToCapture)
+        print(image)
+    } catch {
+        print("Can't capture the window")
+    }
+}
+
 class SettingsWindowControllerDelegate: NSObject, NSWindowDelegate {
     func windowDidBecomeKey(_ notification: Notification) {
         NSApp.setActivationPolicy(.regular) // Show dock icon on open settings window
@@ -71,6 +106,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             appClosureObserver = WindowManipulationObservers.shared
             if Defaults[.enableWindowSwitcher] {
                 keybindHelper = KeybindHelper.shared
+            }
+        }
+        
+        Task {
+            do {
+                try await captureVSCodeWindow()
+            } catch {
+                print("An error occurred: \(error)")
             }
         }
     }
