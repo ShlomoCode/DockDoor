@@ -1,23 +1,5 @@
 <style>
-  h1:first-of-type {
-    display: none;
-  }
-  .my-5 {
-    margin: unset !important;
-  }
-  .markdown-body img {
-    max-width: 50%;
-  }
-  @media (prefers-color-scheme: dark) {
-    body {
-      color-scheme: dark;דדג
-      color: white;
-  
-      color: #419cff;
-    }
-    a:active, link:active {
-      color: #ff1919;
-    }
+  h1:first-of-type 
   }
 </style>
 
