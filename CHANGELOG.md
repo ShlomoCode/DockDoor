@@ -10,7 +10,7 @@
   }
   @media (prefers-color-scheme: dark) {
     body {
-      color-scheme: dark;ד
+      color-scheme: dark;דדג
       color: white;
       background: transparent;ד
     }
@@ -348,8 +348,7 @@ v1.0
 [v1.1.3]: https://github.com/ejbills/DockDoor/compare/v1.1.2...v1.1.3
 [v1.1.2]: https://github.com/ejbills/DockDoor/compare/v1.1.1...v1.1.2
 [v1.1.1]: https://github.com/ejbills/DockDoor/compare/v1.1.0...v1.1.1
-[v1.1.0]: https://github.com/ejbills/DockDoor/compare/v1.0.17...v1.1.0
-[v1.0.17]: https://github.com/ejbills/DockDoor/compare/v1.0.16...v1.0.17
+[
 [v1.0.16]: https://github.com/ejbills/DockDoor/compare/v1.0.15...v1.0.16
 [v1.0.15]: https://github.com/ejbills/DockDoor/compare/v1.0.14...v1.0.15
 [v1.0.14]: https://github.com/ejbills/DockDoor/compare/v1.0.13...v1.0.14
