@@ -1,0 +1,64 @@
+name: SwiftFormat Lint and Comment
+on: pull_request
+
+permissions:
+  pull-requests: write
+
+jobs:
+  lint_and_comment:
+    name: SwiftFormat Lint and Comment
+    runs-on: macos-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Get SwiftFormat Version
+        id: swiftformat_version
+        run: |
+          echo "version=$(swiftformat --version)" >> $GITHUB_OUTPUT
+
+      - name: Run SwiftFormat Lint
+        id: swiftformat_lint
+        run: |
+          swiftformat --lint . --reporter github-actions-log > swiftformat_output.txt
+        continue-on-error: true
+
+      - name: Analyze SwiftFormat Lint Results
+        id: analyze_lint_results
+        run: |
+          if grep -qE "(require formatting|error|warning)" swiftformat_output.txt; then
+            echo "lint_issues=true" >> $GITHUB_ENV
+            echo "lint_output<<EOF" >> $GITHUB_ENV
+            cat swiftformat_output.txt >> $GITHUB_ENV
+            echo "EOF" >> $GITHUB_ENV
+          else
+            echo "lint_issues=false" >> $GITHUB_ENV
+          fi
+
+      - name: Post SwiftFormat Lint Results
+        if: env.lint_issues == 'true'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: swiftformat-lint-result
+          message: |
+            Hi there! Thanks for your contribution. SwiftFormat has identified some required formatting changes:
+
+            ```
+            ${{ env.lint_output }}
+            ```
+
+            No worries! Here's how you can quickly address these:
+
+            1. Run `swiftformat .` in your project directory.
+            2. Review the changes, commit them, and update your PR.
+
+            Need SwiftFormat? Check out the [installation guide](https://github.com/nicklockwood/SwiftFormat#command-line-tool).
+
+            These tweaks help keep our codebase consistent and easy to read. Thanks for your attention to detail! 🙇
+            
+      - name: Fail Job on Lint Issues
+        if: env.lint_issues == 'true'
+        run: |
+          echo "SwiftFormat identified required formatting changes."
+          exit 1
