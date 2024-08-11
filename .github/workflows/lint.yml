@@ -42,7 +42,7 @@ jobs:
         with:
           header: swiftformat-lint-result
           message: |
-            Hi there! Thanks for your contribution. SwiftFormat has identified some required formatting changes:
+            👋 Hi there! Thanks for your contribution. SwiftFormat has identified some required formatting changes:
 
             ```
             ${{ env.lint_output }}
