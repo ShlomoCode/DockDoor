@@ -12,9 +12,7 @@
     body {
       color-scheme: dark;דדג
       color: white;
-    }
-    a
-    
+  
       color: #419cff;
     }
     a:active, link:active {
