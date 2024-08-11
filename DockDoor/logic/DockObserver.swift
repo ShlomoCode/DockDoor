@@ -12,12 +12,12 @@ func handleSelectedDockItemChangedNotification(observer _: AXObserver, element _
 }
 
 final class DockObserver {
-    static let shared =         DockObserver()
+    static let shared = DockObserver()
 
     var axObserver: AXObserver?
     var lastAppUnderMouse: NSRunningApplication?
     private var hoverProcessingTask: Task<Void, Error>?
-    private var isProcessing: Bool = false
+    private var isProcessing: Bool =        false
 
     private init() {
         setupSelectedDockItemObserver()
