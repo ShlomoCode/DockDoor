@@ -13,7 +13,7 @@
       color-scheme: dark;דדג
       color: white;
     }
-    a, 
+    a
     
       color: #419cff;
     }
