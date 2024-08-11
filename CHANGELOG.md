@@ -12,7 +12,7 @@
     body {
       color-scheme: dark;ד
       color: white;
-      background: transparent;
+      background: transparent;ד
     }
     a, :link {
       color: #419cff;
