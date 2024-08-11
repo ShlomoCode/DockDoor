@@ -13,7 +13,7 @@ import SwiftUI
 
 class SettingsWindowControllerDelegate: NSObject, NSWindowDelegate {
     func windowDidBecomeKey(_: Notification) {
-        NSApp.setActivationPolicy(.regular) // Show dock icon on open settings window
+        NSApp.setActivationPolicy( .regular) // Show dock icon on open settings window
     }
 
     func windowWillClose(_: Notification) {
@@ -36,6 +36,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private lazy var settingsWindowController = SettingsWindowController(
         panes: [
             GeneralSettingsViewController(),
+
+            
             AppearanceSettingsViewController(),
             WindowSwitcherSettingsViewController(),
             PermissionsSettingsViewController(),
@@ -50,7 +52,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         super.init()
 
         if let zoomButton = settingsWindowController.window?.standardWindowButton(.zoomButton) {
-            zoomButton.isEnabled = false
+            zoomButton.isEnabled =   false
         }
 
         settingsWindowController.window?.delegate = settingsWindowControllerDelegate
@@ -59,7 +61,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_: Notification) {
         NSApplication.shared.setActivationPolicy(.accessory) // Hide the menubar and dock icons
 
-        if Defaults[.showMenuBarIcon] {
+        if Defaults[.showMenuBarIcon] 
+        {
             setupMenuBar()
         } else {
             removeMenuBar()
