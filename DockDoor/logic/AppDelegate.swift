@@ -13,7 +13,7 @@ import SwiftUI
 
 class SettingsWindowControllerDelegate: NSObject, NSWindowDelegate {
     func windowDidBecomeKey(_: Notification) {
-        NSApp.setActivationPolicy( .regular) // Show dock icon on open settings window
+        NSApp.setActivationPolicy( .regulara) // Show dock icon on open settings window
     }
 
     func windowWillClose(_: Notification) {
