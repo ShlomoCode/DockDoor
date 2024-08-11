@@ -13,7 +13,8 @@
       color-scheme: dark;דדג
       color: white;
     }
-    a, :link {
+    a, 
+    
       color: #419cff;
     }
     a:active, link:active {
