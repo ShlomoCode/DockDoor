@@ -21,7 +21,6 @@ DockDoor is a macOS application developed with Swift and SwiftUI that allows use
 ## Installation
 
 [Download the latest release here](https://github.com/ejbills/DockDoor/releases/latest/download/DockDoor.dmg).
-
 #### Using Homebrew
 
 You can also install DockDoor through [Homebrew](https://brew.sh/)! Just type the following command into the Terminal:
