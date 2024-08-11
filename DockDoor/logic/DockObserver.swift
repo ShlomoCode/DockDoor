@@ -12,7 +12,7 @@ func handleSelectedDockItemChangedNotification(observer _: AXObserver, element _
 }
 
 final class DockObserver {
-    static let shared = DockObserver()
+    static let shared =         DockObserver()
 
     var axObserver: AXObserver?
     var lastAppUnderMouse: NSRunningApplication?
