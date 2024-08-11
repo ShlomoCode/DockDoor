@@ -4,8 +4,7 @@
 </style>
 
 <a name="v1.1.4"></a>
-# [v1.1.4](https://github.com/ejbills/DockDoor/releases/tag/v1.1.4) - 16 Jul 2024
-
+# [v1.1.4](https://github.com/ejbills/DockDoor/releases/tag/v1.1.4) - 16 J
 # Changelog
 
 ## Fixes
