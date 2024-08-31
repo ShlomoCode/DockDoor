@@ -10,6 +10,7 @@
 		0531F8D22C3CC04600327808 /* AppearanceSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0531F8D12C3CC04600327808 /* AppearanceSettingsView.swift */; };
 		0596C2C32C3E060D00DCABEF /* PrivateApis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0596C2C22C3E060D00DCABEF /* PrivateApis.swift */; };
 		05C0C7182C60629C000ADAC6 /* AXUIElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C0C7172C60629C000ADAC6 /* AXUIElement.swift */; };
+		05E662B92C7A5CAB0054FF58 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 05E662B82C7A5CAB0054FF58 /* LaunchAtLogin */; };
 		3A105FD62C1BED660015EC66 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A105FD52C1BED660015EC66 /* BlurView.swift */; };
 		3A105FD92C1C049E0015EC66 /* dockStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A105FD82C1C049E0015EC66 /* dockStyle.swift */; };
 		3A105FDD2C1C0EE20015EC66 /* DynStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A105FDC2C1C0EE20015EC66 /* DynStack.swift */; };
@@ -28,7 +29,6 @@
 		BB1CBD5D2C1BCA4F003969BC /* Misc Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1CBD5C2C1BCA4F003969BC /* Misc Utils.swift */; };
 		BB2567C62C10C5F000C0C93E /* DockUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2567C52C10C5F000C0C93E /* DockUtils.swift */; };
 		BB2CBB092C481295004502C5 /* SpaceWindowCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2CBB082C48128D004502C5 /* SpaceWindowCacheManager.swift */; };
-		BB33E68C2C24C72F00A21D69 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = BB33E68B2C24C72F00A21D69 /* LaunchAtLogin */; };
 		BB3967FD2C291D5A004F1AB6 /* StackedShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3967FC2C291D5A004F1AB6 /* StackedShadow.swift */; };
 		BB3968002C2A6C44004F1AB6 /* SmoothGradient in Frameworks */ = {isa = PBXBuildFile; productRef = BB3967FF2C2A6C44004F1AB6 /* SmoothGradient */; };
 		BB3968022C2A6CC2004F1AB6 /* Marquee.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3968012C2A6CC2004F1AB6 /* Marquee.swift */; };
@@ -111,7 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB33E68C2C24C72F00A21D69 /* LaunchAtLogin in Frameworks */,
+				05E662B92C7A5CAB0054FF58 /* LaunchAtLogin in Frameworks */,
 				BB77F2282C35D27D00BD315A /* FluidGradient in Frameworks */,
 				BBFAD73A2C287A9C0092F5F1 /* Sparkle in Frameworks */,
 				BB3968002C2A6C44004F1AB6 /* SmoothGradient in Frameworks */,
@@ -275,10 +275,10 @@
 			packageProductDependencies = (
 				BB1CBD5A2C1BA8DC003969BC /* Defaults */,
 				BBE7CC8E2C22421900AB8F4D /* Settings */,
-				BB33E68B2C24C72F00A21D69 /* LaunchAtLogin */,
 				BBFAD7392C287A9C0092F5F1 /* Sparkle */,
 				BB3967FF2C2A6C44004F1AB6 /* SmoothGradient */,
 				BB77F2272C35D27D00BD315A /* FluidGradient */,
+				05E662B82C7A5CAB0054FF58 /* LaunchAtLogin */,
 			);
 			productName = DockDoor;
 			productReference = BB157B652C0E31CE00997315 /* DockDoor.app */;
@@ -313,10 +313,10 @@
 			packageReferences = (
 				BB1CBD592C1BA8DC003969BC /* XCRemoteSwiftPackageReference "Defaults" */,
 				BBE7CC8D2C22421900AB8F4D /* XCRemoteSwiftPackageReference "Settings" */,
-				BB33E68A2C24C72F00A21D69 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */,
 				BBFAD7382C287A9C0092F5F1 /* XCRemoteSwiftPackageReference "Sparkle" */,
 				BB3967FE2C2A6C44004F1AB6 /* XCRemoteSwiftPackageReference "SmoothGradient" */,
 				BB77F2262C35D27D00BD315A /* XCRemoteSwiftPackageReference "FluidGradient" */,
+				05E662B72C7A5CAB0054FF58 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Legacy" */,
 			);
 			productRefGroup = BB157B662C0E31CE00997315 /* Products */;
 			projectDirPath = "";
@@ -557,8 +557,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.1.6;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ethanbills.DockDoor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -591,8 +591,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.1.6;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ethanbills.DockDoor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -624,17 +624,17 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		05E662B72C7A5CAB0054FF58 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Legacy" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin-Legacy";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.2;
+			};
+		};
 		BB1CBD592C1BA8DC003969BC /* XCRemoteSwiftPackageReference "Defaults" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sindresorhus/Defaults";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-		BB33E68A2C24C72F00A21D69 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin-Modern";
 			requirement = {
 				branch = main;
 				kind = branch;
@@ -675,15 +675,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		05E662B82C7A5CAB0054FF58 /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 05E662B72C7A5CAB0054FF58 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Legacy" */;
+			productName = LaunchAtLogin;
+		};
 		BB1CBD5A2C1BA8DC003969BC /* Defaults */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BB1CBD592C1BA8DC003969BC /* XCRemoteSwiftPackageReference "Defaults" */;
 			productName = Defaults;
-		};
-		BB33E68B2C24C72F00A21D69 /* LaunchAtLogin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BB33E68A2C24C72F00A21D69 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */;
-			productName = LaunchAtLogin;
 		};
 		BB3967FF2C2A6C44004F1AB6 /* SmoothGradient */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -61,7 +61,7 @@ struct TheMarquee<C: View>: View {
             .frame(minWidth: width, alignment: nonMovingAlignment)
             .offset(x: offset)
         }
-        .scrollDisabled(true)
+        .simultaneousGesture(DragGesture(minimumDistance: 0), including: .all) // .scrollDisabled modifier is macOS 13+ only, https://stackoverflow.com/a/70803503
         .frame(width: width)
         .fadeOnEdges(axis: .horizontal, fadeLength: fadeLength, disable: !shouldMove || fadeLength == 0)
         .measure($containerSize)

@@ -154,8 +154,7 @@ struct WindowPreviewHoverContainer: View {
             Text(appName)
                 .lineLimit(1)
                 .padding(3)
-                .fontWeight(.medium)
-                .font(.system(size: 14))
+                .font(.system(size: 14, weight: .medium))
                 .padding(.horizontal, 4)
                 .shadow(stacked: 2, radius: 6)
                 .background(

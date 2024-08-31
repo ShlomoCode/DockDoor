@@ -49,7 +49,7 @@ struct UpdateSettingsView: View {
 
     var body: some View {
         VStack(alignment: .center) {
-            updateStatusView.bold().padding(1)
+            updateStatusView.font(.system(size: 14, weight: .bold)).padding(1)
 
             HStack(alignment: .center) {
                 VStack(alignment: .center) {
